@@ -28,15 +28,16 @@ function downloadImageByURL(url, filePath) {
 }
 
 getRepoContributors(projectOwner, projectName, function(err, result) {
-  result.forEach(function(i){
-    console.log(i.login);
-    console.log(i.avatar_url);
-    downloadImageByURL(i.avatar_url, `./${i.login}.jpg`);
-  })
-
-  // console.log("Errors:", err);
-  // console.log("Result:", result);
-});
+  if (projectOwner && projectName){
+    result.forEach(function(i){
+      console.log(i.login);
+      console.log(i.avatar_url);
+      downloadImageByURL(i.avatar_url, `./${i.login}.jpg`);
+    })
+  } else {
+    console.log("Arguments are not specify")
+   }
+ });
 
 
 
